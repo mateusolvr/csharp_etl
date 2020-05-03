@@ -1,0 +1,13 @@
+C:\src\haplon\bin\Debug\netcoreapp3.1\haplon.exe
+C:\src\haplon\bin\Debug\netcoreapp3.1\haplon.deps.json
+C:\src\haplon\bin\Debug\netcoreapp3.1\haplon.runtimeconfig.json
+C:\src\haplon\bin\Debug\netcoreapp3.1\haplon.runtimeconfig.dev.json
+C:\src\haplon\bin\Debug\netcoreapp3.1\haplon.dll
+C:\src\haplon\bin\Debug\netcoreapp3.1\haplon.pdb
+C:\src\haplon\obj\Debug\netcoreapp3.1\haplon.csprojAssemblyReference.cache
+C:\src\haplon\obj\Debug\netcoreapp3.1\haplon.csproj.CoreCompileInputs.cache
+C:\src\haplon\obj\Debug\netcoreapp3.1\haplon.AssemblyInfoInputs.cache
+C:\src\haplon\obj\Debug\netcoreapp3.1\haplon.AssemblyInfo.cs
+C:\src\haplon\obj\Debug\netcoreapp3.1\haplon.dll
+C:\src\haplon\obj\Debug\netcoreapp3.1\haplon.pdb
+C:\src\haplon\obj\Debug\netcoreapp3.1\haplon.genruntimeconfig.cache
