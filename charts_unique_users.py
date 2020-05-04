@@ -68,37 +68,8 @@ plt.ylabel('Unique Users')
 
 plt.tight_layout()
 plt.gcf().subplots_adjust(bottom=0.25)
-# plt.show()
-
-# ----------- Build Chart Retention ---------------------
+plt.show()
 
 
-login_dates_by_user = conn.execute("select userId, actionDate" +
-                            " FROM game_server_logs" +
-                            " group by userId, actionDate"+
-                            " order by userId, actionDate")
 
-login_dates_by_user_df = pd.DataFrame(login_dates_by_user.fetchall())
-login_dates_by_user_df.columns = login_dates_by_user.keys()
-print(login_dates_by_user_df.head())
 
-for index, row in login_dates_by_user_df.iterrows():
-    if index == 0:
-        print('Entrou Index = 0')
-        login_dates_by_user_df.at[index, "new_column"] = None
-        continue
-    if login_dates_by_user_df.iloc[index]['userId'] == login_dates_by_user_df.iloc[index-1]['userId']:
-        d1 = login_dates_by_user_df.iloc[index-1]['actionDate']
-        d2 = login_dates_by_user_df.iloc[index]['actionDate']
-        days_dif = abs((d2 - d1).days)
-        login_dates_by_user_df.at[index, "new_column"] = days_dif
-    else:
-        login_dates_by_user_df.at[index, "new_column"] = None
-        print('Entrou Else')
-    if index == 5:
-        break
-
-print(login_dates_by_user_df.head())
-
-with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
-    print(login_dates_by_user_df)
