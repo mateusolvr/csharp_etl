@@ -21,8 +21,11 @@ namespace haplon
                 Console.WriteLine("Connection Opened Successfully");
             }
 
+            // Command to clear table data if desired
+            new MySqlCommand("TRUNCATE game_server_logs", conn).ExecuteNonQuery();
+
             // Loop through the following folder and read each file with .txt extension
-            var folderPath = "events/";
+            var folderPath = "C:/arquivosProva/";
             foreach (string file in Directory.EnumerateFiles(folderPath, "*.txt"))
                 {
                     try
@@ -44,12 +47,12 @@ namespace haplon
                                 // Insert the data into the database
                                 MySqlCommand cmd = null;
                                 string cmdString = "";
+                            
                                 cmdString = ("INSERT INTO game_server_logs (actionDate, actionTime, action, userId) " +
                                 String.Format("Values ('{0}','{1}','{2}','{3}')", actionDate, actionTime, dic["Action"], dic["UserID"]));
                                 cmd = new MySqlCommand(cmdString, conn);
                                 cmd.ExecuteNonQuery();
                             }
-                        Console.WriteLine("\n");
                     }
                     catch (IOException e)
                     {
@@ -57,9 +60,9 @@ namespace haplon
                         Console.WriteLine(e.Message);
                     }
 
-
-                }  
-            
+                Console.WriteLine("File '{0}' inserted into the database.", file);
+                }
+                
             // Close the connection with the database
             conn.Close();
     }
