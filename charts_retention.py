@@ -25,7 +25,6 @@ login_dates_by_user = conn.execute("select userId, actionDate" +
 
 login_dates_by_user_df = pd.DataFrame(login_dates_by_user.fetchall())
 login_dates_by_user_df.columns = login_dates_by_user.keys()
-# print(login_dates_by_user_df.head())
 
 for index, row in login_dates_by_user_df.iterrows():
     if index == 0:
@@ -40,10 +39,6 @@ for index, row in login_dates_by_user_df.iterrows():
     else:
         first_index = index
         login_dates_by_user_df.at[index, "diff_days_last_login"] = None
-
-
-# with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
-#     print(login_dates_by_user_df)
 
 login_dates_by_user_df['actionDate']= pd.to_datetime(login_dates_by_user_df['actionDate']) 
 
@@ -70,10 +65,6 @@ final_df['one_day_occurrence_perc'] = final_df['one_day_occurrence']/final_df['t
 final_df['three_days_occurrence_perc'] = final_df['three_days_occurrence']/final_df['total']*100
 final_df = final_df.fillna(0)
 final_df.index = final_df.index.strftime('%d/%m/%Y').map(str)
-# print(first_login_date_grouped_by_date)
-# print(one_day_retention_grouped_by_date)
-print(final_df.dtypes)
-print(final_df.index)
 
 plt.subplot(1, 2, 1)
 plt.title("Retention: One day (%)")
@@ -99,8 +90,3 @@ plt.xticks(rotation=30)
 plt.tight_layout()
 plt.gcf().subplots_adjust(bottom=0.25)
 plt.show()
-
-
-
-# with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
-#     print(three_days_retention_df)
